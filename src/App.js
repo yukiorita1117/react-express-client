@@ -17,6 +17,13 @@ class App extends Component {
         {this.state.users.map(user => (
           <div key="{user.id}">{user.username}</div>
         ))}
+        <h2>POSTING TEST</h2>
+        <form method="post" action="/create">
+          <input type="text" name="name" />
+          <br />
+          <br />
+          <input type="submit" value="createって話" />
+        </form>
       </div>
     );
   }
