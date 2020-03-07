@@ -29,10 +29,10 @@ class App extends Component {
           <input type="submit" value="createって話" />
         </form>
 
-        <h2>Cotohaからdata取得</h2>
+        {/* <h2>Cotohaからdata取得</h2>
         {this.state.cotoha.map(cotoha => (
           <div key={cotoha.id}>{cotoha.text}</div>
-        ))}
+        ))} */}
       </div>
     );
   }
