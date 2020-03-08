@@ -5,12 +5,11 @@ import { requestData, receiveDataSuccess, receiveDataFailed } from "../actions";
 
 const FetchDataList = ({ store }) => {
   const { isFetching, resultArray } = store.getState().fetchData;
-  console.log("resultArrayない？？", store.getState().fetchData);
 
   const handleFetchData = () => {
     store.dispatch(requestData()); // axios.get()を呼ぶ前にisFetchingをtrueに！
     axios
-      .get("/api/test")
+      .get("/api/cotoha")
       .then(response => {
         // データ受け取りに成功
         const _resultArray = response.data;
@@ -18,26 +17,29 @@ const FetchDataList = ({ store }) => {
       })
       .catch(err => {
         // データ受け取りに失敗
-        console.error(new Error(err));
+        // console.error(new Error(err));
         store.dispatch(receiveDataFailed()); // isFetchingをfalseに
       });
   };
-  console.log("ええええええ", resultArray);
+
+  const Item = styled.li`
+    list-style: none;
+  `;
 
   return (
     <>
       <br />
       <div>
-        {isFetching ? ( // isFetchingの値で分岐
-          <h2>Now Loading...</h2> // データをFetch中ならばローディングアイコンを表示
+        {isFetching ? (
+          // データをFetch中ならばローディングアイコンを表示
+          <h2>Now Loading...</h2>
         ) : (
           <div>
             <button onClick={() => handleFetchData()}>fetch data</button>
             <ul>
-              {resultArray.length > 1 &&
-                resultArray.map(result => (
-                  <li key={result.id}>{`${result.inputText}`}</li>
-                ))}
+              {resultArray.map(result => (
+                <Item key={result.id}>{`${result.inputText}`}</Item>
+              ))}
             </ul>
           </div>
         )}

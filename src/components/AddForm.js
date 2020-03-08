@@ -15,7 +15,7 @@ const AddForm = ({ store }) => {
     e.preventDefault(); // フォームsubmit時のデフォルトの動作を抑制
 
     axios
-      .post("/api/test", {
+      .post("/api/cotoha", {
         inputText
       }) // キャラクターの名前、年齢からなるオブジェクトをサーバーにPOST
       .then(response => {
