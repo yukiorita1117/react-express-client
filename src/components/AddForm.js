@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import {
   changeInputText,
-  initializeForm,
-  requestData,
-  receiveDataSuccess,
-  receiveDataFailed
+  initializeForm
+  //   requestData,
+  //   receiveDataSuccess,
+  //   receiveDataFailed
 } from "../actions";
 
 const AddForm = ({ store }) => {
@@ -17,7 +17,7 @@ const AddForm = ({ store }) => {
     axios
       .post("/api/cotoha", {
         inputText
-      }) // キャラクターの名前、年齢からなるオブジェクトをサーバーにPOST
+      }) // inputTextをサーバーにPOST
       .then(response => {
         console.log(response); // 後で行う動作確認のためのコンソール出力
         store.dispatch(initializeForm()); // submit後はフォームを初期化
